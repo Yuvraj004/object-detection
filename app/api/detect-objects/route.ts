@@ -1,5 +1,5 @@
 import { utapi } from "@/utils/uploadthing";
-// import { pipeline } from "@xenova/transformers";
+import { pipeline } from "@xenova/transformers";
 
 export async function POST(req: Request, res: Response) {
   // get uploaded url from uploadthing
@@ -11,22 +11,22 @@ export async function POST(req: Request, res: Response) {
   console.log(url);
 
   //dtect objects using onnx local model
-//   const detector = await pipeline("object-detection", "Xenova/detr-resnet-50");
-//   const output = await detector(url);
-//   console.log(output);
+  const detector = await pipeline("object-detection", "Xenova/detr-resnet-50");
+  const output = await detector(url!);
+  console.log(output);
 
   // parse output -> list of objects -> label (detected objects)
 
   const countObj: { [key: string]: number } = {};
-//   output.forEach(({ score, label }: any) => {
-//     if (score > 0.85) {
-//       if (countObj[label]) {
-//         countObj[label]++;
-//       } else {
-//         countObj[label] = 1;
-//       }
-//     }
-//   });
+  output.forEach(({ score, label }: any) => {
+    if (score > 0.85) {
+      if (countObj[label]) {
+        countObj[label]++;
+      } else {
+        countObj[label] = 1;
+      }
+    }
+  });
 
   return new Response(
     JSON.stringify({
