@@ -5,8 +5,8 @@ export async function POST(req: Request, res: Response) {
   // get uploaded url from uploadthing
   const formData = await req.formData();
   const files = formData.getAll("files");
-  const response = await utapi.uploadFiles(files);
-  const responseData = response[0].data;
+  const response = await utapi.uploadFiles(<any>files);
+  const responseData = (<any>response)[0].data;
   const url = responseData?.url;
   console.log(url);
 

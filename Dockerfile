@@ -26,8 +26,8 @@ COPY --link  . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-ENV UPLOADTHING_SECRET=<your UPLOADTHING_SECRET>
-ENV UPLOADTHING_APP_ID=<your UPLOADTHING_APP_ID>
+ENV UPLOADTHING_SECRET=sk_live_a83367d05b74b3fdc85edc8958741caa323f409912e53a351736150bf62d381e
+ENV UPLOADTHING_APP_ID=8l99g32nex
 
 RUN npm run build
 
